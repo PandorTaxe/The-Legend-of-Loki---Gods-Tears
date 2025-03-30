@@ -7,15 +7,15 @@ public class SwapArea : MonoBehaviour
 {
     public int  AreaToSwap = 0; //0: vertical ; 1: horizontal
     [SerializeField] private CameraFollow _cameraFollow;
-    private Vector3 _playerPosition = Vector3.zero;
+    [SerializeField] private RectTransform _playerMapTransform;
 
     [SerializeField] private int direction;
 
     void OnTriggerEnter2D(Collider2D _other)
     {
-    
         Vector2 _direction = CalculDirection(_other.gameObject.transform.position);
         _other.transform.position += (Vector3)_direction * 2;
+        _playerMapTransform.position += (Vector3)_direction * 200;
         _cameraFollow.UpdateCameraPosition(_direction);
     }
 
