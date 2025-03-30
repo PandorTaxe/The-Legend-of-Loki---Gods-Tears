@@ -5,4 +5,5 @@ public class SaveData
 {
     public Vector3 _playerPosition;
     public Vector3 _cameraPosition;
+    public Vector3 _playerMapPosition;
 }

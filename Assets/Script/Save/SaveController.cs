@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class SaveController : MonoBehaviour
 {
+    [SerializeField] private RectTransform _playerMapTransform;
     private string saveLocation;
     private GameObject _player;
 
@@ -21,6 +22,7 @@ public class SaveController : MonoBehaviour
         SaveData saveData = new SaveData
         {
             _playerPosition = _player.GetComponentInChildren<PlayerManager>().transform.position,
+            _playerMapPosition = _playerMapTransform.position,
             _cameraPosition = _player.GetComponentInChildren<Camera>().transform.position,
         };
         File.WriteAllText(saveLocation, JsonUtility.ToJson(saveData));
@@ -33,6 +35,7 @@ public class SaveController : MonoBehaviour
             SaveData saveData = JsonUtility.FromJson<SaveData>(File.ReadAllText(saveLocation));
             _player.GetComponentInChildren<PlayerManager>().transform.position = saveData._playerPosition;
             _player.GetComponentInChildren<Camera>().transform.position = saveData._cameraPosition;
+            _playerMapTransform.position = saveData._playerMapPosition;
         }
         else
         {
