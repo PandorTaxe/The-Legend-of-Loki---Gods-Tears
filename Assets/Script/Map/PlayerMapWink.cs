@@ -16,7 +16,7 @@ public class PlayerMapWink : MonoBehaviour
 
     private void Update()
     {
-        _actualWinkTimer -= Time.deltaTime;
+        _actualWinkTimer -= Time.unscaledDeltaTime;
         if (_actualWinkTimer <= 0)
         {
             _isHide = !_isHide;
@@ -25,7 +25,7 @@ public class PlayerMapWink : MonoBehaviour
         }
     }
 
-    public void Wink()
+    private void Wink()
     {
         if (_isHide)
         {
