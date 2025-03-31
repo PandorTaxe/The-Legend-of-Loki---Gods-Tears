@@ -13,6 +13,8 @@ public class SwapArea : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D _other)
     {
+        if(!_other.CompareTag("Player"))
+            return;
         Vector2 _direction = CalculDirection(_other.gameObject.transform.position);
         _other.transform.position += (Vector3)_direction * 2;
         _playerMapTransform.position += (Vector3)_direction * 200;
