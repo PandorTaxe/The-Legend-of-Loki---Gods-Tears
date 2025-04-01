@@ -6,6 +6,7 @@ public class EnemySpawn : MonoBehaviour
 {
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private List<GameObject> _spawnPoints;
+    [SerializeField] private int _enemyNumber;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -19,6 +20,11 @@ public class EnemySpawn : MonoBehaviour
 
     private void Spawn()
     {
+        // for (int i = 0; i <= _enemyNumber; i++)
+        // {
+        //     Instantiate(_enemies[0], _spawnPoints[i].transform.position, Quaternion.identity ,gameObject.transform);
+        // }
+        
         foreach (var spawnPoint in _spawnPoints)
         {
             foreach (var enemy in _enemies)
